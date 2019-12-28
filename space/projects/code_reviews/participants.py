@@ -1,9 +1,7 @@
 from space.projects.projects import Projects
 
-base_path: str = '/api/http/projects/key:{}/code-reviews/{}/participants/{}'
 
-
-def edit_review_participant(projects: Projects, projectKey: str, reviewId: str, user: str,
+def edit_review_participant(projects: Projects, reviewId: str, user: str,
                             role: str = False,
                             state: str = False
                             ):
@@ -17,7 +15,9 @@ def edit_review_participant(projects: Projects, projectKey: str, reviewId: str, 
     :param user:
     :return:
     """
-    urn = base_path.format(projectKey, reviewId, user)
+    base_path: str = projects.mount_base_path('code-reviews/{}/participants/{}')
+    urn = base_path.format(projects.project, reviewId, user)
+
     data = {}
 
     if role or role is None:

@@ -1,12 +1,10 @@
 from space.projects.projects import Projects
-from lib.types import (
-    AddRevisions, RemoveRevisions
+from space_types.revisions import (
+    Revisions
 )
 
-base_path: str = '/api/http/projects/key:{}/code-reviews/{}/revisions'
 
-
-def add_revisions_to_review(projects: Projects, projectKey: str, reviewId: str, revisions: AddRevisions):
+def add_revisions_to_review(projects: Projects, reviewId: str, revisions: Revisions):
     """
         https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_xxx_revisions&endpoint=rest_create
     :param projects:
@@ -15,14 +13,15 @@ def add_revisions_to_review(projects: Projects, projectKey: str, reviewId: str, 
     :param revisions:
     :return:
     """
-    urn: str = base_path.format(projectKey, reviewId)
+    base_path: str = projects.mount_base_path('code-reviews/{}/revisions')
+    urn: str = base_path.format(projects.project, reviewId)
 
-    data: dict = revisions.asdict()
+    data: dict = revisions.__todict__()
 
     return projects.post(urn=urn, data=data)
 
 
-def remove_revisions_from_review(projects: Projects, projectKey: str, reviewId: str, revisions: RemoveRevisions):
+def remove_revisions_from_review(projects: Projects, reviewId: str, revisions: list):
     """
         https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_xxx_revisions&endpoint=rest_delete
     :param projects:
@@ -31,8 +30,11 @@ def remove_revisions_from_review(projects: Projects, projectKey: str, reviewId: 
     :param revisions:
     :return:
     """
-    urn: str = base_path.format(projectKey, reviewId)
+    base_path: str = projects.mount_base_path('code-reviews/{}/revisions')
+    urn: str = base_path.format(projects.project, reviewId)
 
-    data: dict = revisions.asdict()
+    data: dict = {
+        'revisions': revisions
+    }
 
     return projects.delete(urn=urn, params=data)
