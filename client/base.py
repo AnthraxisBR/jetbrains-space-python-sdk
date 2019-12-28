@@ -1,4 +1,4 @@
-from urllib import parse
+import urllib
 
 import requests
 
@@ -20,7 +20,7 @@ class Client(object):
             params = {}
         url: str = self.url + urn
         if params and params is not None:
-            url += '?' + parse.urlencode(params)
+            url += '?' + urllib.parse.urlencode(params)
         return url
 
     def get(self, urn: str, params=None):
