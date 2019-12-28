@@ -2,4 +2,13 @@ from ..space import Space
 
 
 class Projects(Space):
-    pass
+    project: str
+
+    def __init__(self, project: str):
+        urn: str = '/projects/key:{}/'
+
+        super(Projects, self).__init__()
+
+        self.project: str = project
+
+        self.urn += urn

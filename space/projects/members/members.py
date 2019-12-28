@@ -1,54 +1,53 @@
 from helper.check_types import validate
+from helper.check_types import validate
 from space.projects.projects import Projects
 
 
-def get_all_full_projects_by_member(projects: Projects, member: str):
+def add_member(projects: Projects, profileId: str):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_full-projects&endpoint=rest_query_member%3Axxx
+        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_xxx_members&endpoint=rest_create
     :param projects:
-    :param member:
+    :param profileId:
     :return:
     """
-    base_path: str = '/api/http/projects/full-projects'
-    base_path += 'member:{}'
-    urn = base_path.format(projects.project, member)
-    return projects.get(urn=urn)
+    base_path: str = projects.mount_base_path('members')
+    urn = base_path.format(projects.project)
+    data: dict = {
+        'profileId': profileId
+    }
+    return projects.post(urn=urn, data=data)
 
 
-def get_all_full_projects_by_team(projects: Projects, teamId: str):
+def get_all_members(projects: Projects, profileId: str, params=None):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_full-projects&endpoint=rest_query_team%3Axxx
+        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_members&endpoint=rest_query
     :param projects:
-    :param teamId:
+    :param profileId:
+    :param params:
     :return:
     """
-    base_path: str = '/api/http/projects/full-projects'
-    base_path += 'team:{}'
-    urn = base_path.format(projects.project, teamId)
-    return projects.get(urn=urn)
+    if params is None:
+        params = {}
+
+    available_args: dict = {
+        '$skip': str,
+        '$top': int,
+        'query': str,  # CodeReviewState?
+    }
+
+    params = validate(params=params, comparable=available_args)
+    base_path: str = projects.mount_base_path('members')
+    urn = base_path.format(projects.project)
+    return projects.post(urn=urn, params=params)
 
 
-def get_full_project(projects: Projects, id: str):
+def remove_member(projects: Projects, profileId: str):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_full-projects&endpoint=rest_get_xxx
+        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_xxx_members&endpoint=rest_delete_xxx
     :param projects:
-    :param id:
+    :param profileId:
     :return:
     """
-    base_path: str = '/api/http/projects/full-projects'
-    base_path += '{}'
-    urn = base_path.format(projects.project, id)
-    return projects.get(urn=urn)
-
-
-def get_full_project_by_key(projects: Projects, projectId: str):
-    """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_full-projects&endpoint=rest_get_key%3Axxx
-    :param projects:
-    :param projectId:
-    :return:
-    """
-    base_path: str = '/api/http/projects/full-projects'
-    base_path += 'key:{}'
-    urn = base_path.format(projects.project, projectId)
-    return projects.get(urn=urn)
+    base_path: str = projects.mount_base_path('members/{}')
+    urn = base_path.format(projects.project, profileId)
+    return projects.delete(urn=urn)
