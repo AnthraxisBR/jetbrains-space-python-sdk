@@ -1,4 +1,4 @@
-from types.consts import (
+from space_types.consts import (
     Opened, Closed, Deleted
 )
 from exceptions.TypeException import InvalidStateException
