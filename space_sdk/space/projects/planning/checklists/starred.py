@@ -7,5 +7,5 @@ def get_all_starred_checklist(projects: Projects):
     :param projects:
     :return:
     """
-    base_path: str = '/api/http/projects/planning/checklists/{}/full-checklist-tree'
+    base_path: str = '/api/http/projects/planning/checklists/starred'
     return projects.get(urn=base_path)
