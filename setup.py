@@ -3,9 +3,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-     name='space-sdk',
+     name='Jetbrains Space Python SDK',
      version='0.1-pre-alfa',
-     scripts=['space-sdk'] ,
      author="Gabriel Mourão",
      author_email="gabrielmouraodemelo@gmail.com",
      description="A Jerbrains Space Python SDK",

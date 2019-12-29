@@ -4,7 +4,7 @@ from tests.base_test_class import TestBase
 from space import *
 
 
-class TestProjectsPlanningChecklistChecklists(object):
+class TestProjectsPlanningChecklistChecklists(TestBase):
 
     projects: Projects
 
