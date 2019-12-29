@@ -1,6 +1,6 @@
+import inspect
 from space_sdk.space_types import *
 from space_sdk.exceptions.TypeException import InvalidParameterTypeException, InvalidObjectException
-
 
 def validate(params: dict, comparable: dict):
     filtered_params: dict = {}
@@ -55,10 +55,15 @@ def check_validation_function(attr, value, func_list) -> list:
 
 def validate_object(obj):
     attrs: list = [a for a in dir(obj) if not a.startswith('__')]
+
     errors: list = []
     new_dict: dict = {}
     for attr in attrs:
+
         cls_attr = getattr(obj, attr)
+        if inspect.ismethod(cls_attr):
+            continue
+
         value = cls_attr[len(cls_attr) - 1]
         checks = check_validation_function(attr, value, cls_attr)
         if len(checks) > 0:
