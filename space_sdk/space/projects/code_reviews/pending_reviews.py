@@ -4,7 +4,7 @@ from space_sdk.space.projects.projects import Projects
 def get_pending_reviews_count(projects: Projects):
 
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_pending-reviews&endpoint=http_get_count
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_pending-reviews&endpoint=http_get_count
     :param projects:
     :param projectKey:
     :return:

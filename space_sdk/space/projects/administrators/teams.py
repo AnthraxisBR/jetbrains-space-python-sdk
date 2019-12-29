@@ -5,7 +5,7 @@ base_path: str = '/api/http/projects/{}/administrators'
 
 def add_administrator_team(projects: Projects, projectId: str, profileId: str):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_xxx_administrators_teams&endpoint=rest_create
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_xxx_administrators_teams&endpoint=rest_create
     :param projects:
     :param projectId:
     :param profileId:
@@ -19,7 +19,7 @@ def add_administrator_team(projects: Projects, projectId: str, profileId: str):
 
 def remove_administrator_team(projects: Projects, projectId: str, profileId: str):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_xxx_administrators_teams&endpoint=rest_delete_xxx
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_xxx_administrators_teams&endpoint=rest_delete_xxx
     :param projects:
     :param projectId:
     :param profileId:

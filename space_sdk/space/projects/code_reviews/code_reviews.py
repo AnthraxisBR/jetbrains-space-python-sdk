@@ -5,7 +5,7 @@ from space_sdk.space.projects.projects import Projects
 def get_all_code_reviews(projects: Projects, params=None):
 
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews&endpoint=rest_query
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews&endpoint=rest_query
     :param projects:
     :param params:
     :return:
@@ -36,7 +36,7 @@ def get_all_code_reviews(projects: Projects, params=None):
 
 def get_code_review_by_review_number(projects: Projects, reviewNumber: int):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews&endpoint=rest_get_review-number%3Axxx
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews&endpoint=rest_get_review-number%3Axxx
     :param projects:
     :param reviewNumber:
     :return:
@@ -48,7 +48,7 @@ def get_code_review_by_review_number(projects: Projects, reviewNumber: int):
 
 def get_review_counts(projects: Projects):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews&endpoint=http_get_review-counts
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews&endpoint=http_get_review-counts
     :param projects:
     :return:
     """
@@ -59,7 +59,7 @@ def get_review_counts(projects: Projects):
 
 def mark_review_as_read(projects: Projects, reviewNumber: int):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews&endpoint=http_post_xxx_mark-as-read
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews&endpoint=http_post_xxx_mark-as-read
     :param projects:
     :param reviewNumber:
     :return:

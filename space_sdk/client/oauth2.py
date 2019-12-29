@@ -68,7 +68,7 @@ class SpaceOauth2(object):
         headers: dict = {
             'Authorization': 'Basic ' + self.get_base64_secrets(),
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Host': 'ltinteg.jetbrains.space',
+            'Host': os.getenv('SPACE_HOST'),
             'Accept': 'application/json'
         }
         url: str = self.url + '/oauth/token'

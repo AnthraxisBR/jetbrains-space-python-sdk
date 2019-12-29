@@ -4,7 +4,7 @@ from space_sdk.space.projects.projects import Projects
 
 def add_member(projects: Projects, profileId: str):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_xxx_members&endpoint=rest_create
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_xxx_members&endpoint=rest_create
     :param projects:
     :param profileId:
     :return:
@@ -19,7 +19,7 @@ def add_member(projects: Projects, profileId: str):
 
 def get_all_members(projects: Projects, profileId: str, params=None):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_members&endpoint=rest_query
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_members&endpoint=rest_query
     :param projects:
     :param profileId:
     :param params:
@@ -42,7 +42,7 @@ def get_all_members(projects: Projects, profileId: str, params=None):
 
 def remove_member(projects: Projects, profileId: str):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_xxx_members&endpoint=rest_delete_xxx
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_xxx_members&endpoint=rest_delete_xxx
     :param projects:
     :param profileId:
     :return:

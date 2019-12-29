@@ -3,7 +3,7 @@ from space_sdk.space.projects.projects import Projects
 
 def get_all_full_projects_by_member(projects: Projects, member: str):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_full-projects&endpoint=rest_query_member%3Axxx
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_full-projects&endpoint=rest_query_member%3Axxx
     :param projects:
     :param member:
     :return:
@@ -16,7 +16,7 @@ def get_all_full_projects_by_member(projects: Projects, member: str):
 
 def get_all_full_projects_by_team(projects: Projects, teamId: str):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_full-projects&endpoint=rest_query_team%3Axxx
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_full-projects&endpoint=rest_query_team%3Axxx
     :param projects:
     :param teamId:
     :return:
@@ -29,7 +29,7 @@ def get_all_full_projects_by_team(projects: Projects, teamId: str):
 
 def get_full_project(projects: Projects, id: str):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_full-projects&endpoint=rest_get_xxx
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_full-projects&endpoint=rest_get_xxx
     :param projects:
     :param id:
     :return:
@@ -42,7 +42,7 @@ def get_full_project(projects: Projects, id: str):
 
 def get_full_project_by_key(projects: Projects, projectId: str):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_full-projects&endpoint=rest_get_key%3Axxx
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_full-projects&endpoint=rest_get_key%3Axxx
     :param projects:
     :param projectId:
     :return:

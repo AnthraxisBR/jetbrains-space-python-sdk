@@ -3,7 +3,7 @@ from space_sdk.space.projects.projects import Projects
 
 def edit_review_title(projects: Projects, reviewId: str, title: str):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_xxx_title&endpoint=rest_update
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_xxx_title&endpoint=rest_update
     :param projects:
     :param reviewId:
     :param title:

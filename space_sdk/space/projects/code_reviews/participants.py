@@ -6,7 +6,7 @@ def edit_review_participant(projects: Projects, reviewId: str, user: str,
                             state: str = False
                             ):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_xxx_participants&endpoint=rest_update_xxx
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_xxx_participants&endpoint=rest_update_xxx
     :param role:
     :param state:
     :param projects:

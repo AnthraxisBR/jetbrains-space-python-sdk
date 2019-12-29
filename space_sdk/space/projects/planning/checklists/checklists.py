@@ -5,7 +5,7 @@ from space_sdk.space.projects.projects import Projects
 
 def create_checklist(projects: Projects, checklist: Checklist):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_planning_checklists&endpoint=rest_create
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_planning_checklists&endpoint=rest_create
     :param projects:
     :param checklist:
     :return:
@@ -18,7 +18,7 @@ def create_checklist(projects: Projects, checklist: Checklist):
 
 def get_all_checklists(projects: Projects, projectId=None):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_planning_checklists&endpoint=rest_query
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_planning_checklists&endpoint=rest_query
     :param projects:
     :param projectId:
     :return:
@@ -43,7 +43,7 @@ def get_all_checklists(projects: Projects, projectId=None):
 
 def update_checklist(projects: Projects, checklistId: str, checklist: Checklist):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_planning_checklists&endpoint=rest_update_xxx
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_planning_checklists&endpoint=rest_update_xxx
     :param projects:
     :param checklistId:
     :param checklist:
@@ -57,7 +57,7 @@ def update_checklist(projects: Projects, checklistId: str, checklist: Checklist)
 
 def delete_checklist(projects: Projects, checklistId: str):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_planning_checklists&endpoint=rest_delete_xxx
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_planning_checklists&endpoint=rest_delete_xxx
     :param projects:
     :param checklistId:
     :return:

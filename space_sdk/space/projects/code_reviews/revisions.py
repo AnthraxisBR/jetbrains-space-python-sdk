@@ -6,7 +6,7 @@ from space_sdk.space_types.revisions import (
 
 def add_revisions_to_review(projects: Projects, reviewId: str, revisions: Revisions):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_xxx_revisions&endpoint=rest_create
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_xxx_revisions&endpoint=rest_create
     :param projects:
     :param projectKey:
     :param reviewId:
@@ -23,7 +23,7 @@ def add_revisions_to_review(projects: Projects, reviewId: str, revisions: Revisi
 
 def remove_revisions_from_review(projects: Projects, reviewId: str, revisions: list):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_xxx_revisions&endpoint=rest_delete
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_xxx_revisions&endpoint=rest_delete
     :param projects:
     :param projectKey:
     :param reviewId:

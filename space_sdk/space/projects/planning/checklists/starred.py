@@ -3,7 +3,7 @@ from space_sdk.space.projects.projects import Projects
 
 def get_all_starred_checklist(projects: Projects):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_planning_checklists_starred&endpoint=rest_query
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_planning_checklists_starred&endpoint=rest_query
     :param projects:
     :return:
     """

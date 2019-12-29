@@ -3,7 +3,7 @@ from space_sdk.space.projects.projects import Projects
 
 def get_all_changes(projects: Projects, reviewId: str):
     """
-        https://ltinteg.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_xxx_changes&endpoint=rest_query
+        https://{company}.jetbrains.space/httpApiPlayground?resource=projects_key%3Axxx_code-reviews_xxx_changes&endpoint=rest_query
     :param projects:
     :param reviewId:
     :return:
