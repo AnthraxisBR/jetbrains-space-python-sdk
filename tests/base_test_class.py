@@ -1,8 +1,7 @@
-import settings
 import unittest
 import logging
 from logging import Logger
-from space import *
+from space_sdk.space import *
 
 
 class TestBase(unittest.TestCase):

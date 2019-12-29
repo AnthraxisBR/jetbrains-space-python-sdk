@@ -1,4 +1,3 @@
-import settings
 from space import *
 
 projects = Projects()
