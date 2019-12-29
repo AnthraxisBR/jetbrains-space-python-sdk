@@ -1,5 +1,6 @@
+import types
 from space_types import *
-from exceptions.TypeException import InvalidParameterTypeException
+from exceptions.TypeException import InvalidParameterTypeException, InvalidObjectException
 
 
 def validate(params: dict, comparable: dict):
@@ -30,24 +31,44 @@ def is_nullable(value):
 
 
 def required(value):
-    return value is not None
+    return value is not None and value is not Empty
 
 
 validation_messages = {
-    is_str: 'Field {} must type of string',
-    is_int: 'Field {} must type of integer',
-    is_float: 'Field {} must type of float',
-    required: 'Field {} is required '
+    is_str: 'Field "{}" must type of string',
+    is_int: 'Field "{}" must type of integer',
+    is_float: 'Field "{}" must type of float',
+    required: 'Field "{}" is required'
 }
 
 
-def check_validation_function(attr, value, func_list):
+def check_validation_function(attr, value, func_list) -> list:
     checks: list = []
     for func in func_list:
         if not callable(func) or func == Empty:
             continue
 
-        if not func(value):
+        if not func(value) and is_nullable not in func_list:
             if func in validation_messages:
-                checks.append(validation_messages[func])
-    print(checks)
+                checks.append(validation_messages[func].format(attr))
+    return checks
+
+
+def validate_object(obj):
+    attrs: list = [a for a in dir(obj) if not a.startswith('__')]
+    errors: list = []
+    new_dict: dict = {}
+    for attr in attrs:
+        cls_attr = getattr(obj, attr)
+        value = cls_attr[len(cls_attr) - 1]
+        checks = check_validation_function(attr, value, cls_attr)
+        if len(checks) > 0:
+            errors += checks
+        else:
+            if value is not Empty:
+                new_dict[attr] = value
+
+    if len(errors) > 0:
+        print(errors)
+        raise InvalidObjectException(errors=errors)
+    return new_dict

@@ -1,5 +1,3 @@
-from helper.check_types import validate
-from helper.check_types import validate
 from space.projects.projects import Projects
 
 

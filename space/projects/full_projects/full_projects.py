@@ -1,4 +1,3 @@
-from helper.check_types import validate
 from space.projects.projects import Projects
 
 
@@ -11,7 +10,7 @@ def get_all_full_projects_by_member(projects: Projects, member: str):
     """
     base_path: str = '/api/http/projects/full-projects'
     base_path += 'member:{}'
-    urn = base_path.format(projects.project, member)
+    urn = base_path.format(member)
     return projects.get(urn=urn)
 
 
@@ -24,7 +23,7 @@ def get_all_full_projects_by_team(projects: Projects, teamId: str):
     """
     base_path: str = '/api/http/projects/full-projects'
     base_path += 'team:{}'
-    urn = base_path.format(projects.project, teamId)
+    urn = base_path.format(teamId)
     return projects.get(urn=urn)
 
 
@@ -37,7 +36,7 @@ def get_full_project(projects: Projects, id: str):
     """
     base_path: str = '/api/http/projects/full-projects'
     base_path += '{}'
-    urn = base_path.format(projects.project, id)
+    urn = base_path.format(id)
     return projects.get(urn=urn)
 
 
@@ -50,5 +49,5 @@ def get_full_project_by_key(projects: Projects, projectId: str):
     """
     base_path: str = '/api/http/projects/full-projects'
     base_path += 'key:{}'
-    urn = base_path.format(projects.project, projectId)
+    urn = base_path.format(projectId)
     return projects.get(urn=urn)
