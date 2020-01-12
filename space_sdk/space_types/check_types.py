@@ -1,6 +1,8 @@
+import pendulum
 import inspect
 from space_sdk.space_types import *
 from space_sdk.exceptions.TypeException import InvalidParameterTypeException, InvalidObjectException
+
 
 def validate(params: dict, comparable: dict):
     filtered_params: dict = {}
@@ -21,6 +23,14 @@ def is_int(value):
     return type(value) == int
 
 
+def is_list(value):
+    return type(value) == list
+
+
+def is_bool(value):
+    return type(value) == bool
+
+
 def is_float(value):
     return type(value) == float
 
@@ -33,11 +43,27 @@ def required(value):
     return value is not None and value is not Empty
 
 
+def is_date(value):
+    try:
+        pendulum.pase(value)
+    except Exception as e:
+        return False
+    return True
+
+
+def is_list_of(value, of_type: BaseType):
+    for value_item in value:
+        if not (type(value_item) == type(of_type)):
+            return False
+
+
 validation_messages = {
-    is_str: 'Field "{}" must type of string',
-    is_int: 'Field "{}" must type of integer',
-    is_float: 'Field "{}" must type of float',
-    required: 'Field "{}" is required'
+    is_str: 'Field "{}" must be type of string',
+    is_int: 'Field "{}" must be type of integer',
+    is_float: 'Field "{}" must be type of float',
+    required: 'Field "{}" is required',
+    is_date: 'Field "{}" must be a valid date in format Y-m-d',
+    is_list_of: 'Field "{}" must a list'
 }
 
 
