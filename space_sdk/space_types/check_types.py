@@ -91,6 +91,9 @@ def validate_object(obj):
             continue
 
         value = cls_attr[len(cls_attr) - 1]
+        if isinstance(value, BaseType):
+            pass
+        g
         checks = check_validation_function(attr, value, cls_attr)
         if len(checks) > 0:
             errors += checks
