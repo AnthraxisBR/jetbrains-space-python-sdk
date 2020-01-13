@@ -1,12 +1,11 @@
-from space_sdk.space_types import *
 from space_sdk.space_types import Empty
-from space_sdk.space_types.base_type import BaseType
+from space_sdk.object_types.base_type import RequestType
 from space_sdk.space_types.check_types import (
-    is_nullable, required, is_str, is_date, is_list
+    is_nullable, required, is_str, is_list
 )
 
 
-class GitFile(BaseType):
+class GitFile(RequestType):
     commit: str = [required, is_str]
     path: str = [required, is_str]
     blob: str = [required, is_str]
@@ -23,7 +22,7 @@ class GitFile(BaseType):
         return self.validated_dict
 
 
-class GitCommitChange(BaseType):
+class GitCommitChange(RequestType):
     change_type: str = [required]
 
     old: GitFile = [is_nullable]
@@ -43,7 +42,7 @@ class GitCommitChange(BaseType):
         return self.validated_dict
 
 
-class CodeDiscussionsByChange(BaseType):
+class CodeDiscussionsByChange(RequestType):
     revisions: list = [required, is_list]
 
     change: GitCommitChange = [is_nullable, is_str]

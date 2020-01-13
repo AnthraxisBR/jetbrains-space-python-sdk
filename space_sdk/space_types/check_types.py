@@ -1,4 +1,4 @@
-import pendulum
+#import pendulum
 import inspect
 from space_sdk.space_types import *
 from space_sdk.exceptions.TypeException import InvalidParameterTypeException, InvalidObjectException
@@ -51,19 +51,14 @@ def is_date(value):
     return True
 
 
-def is_list_of(value, of_type: BaseType):
-    for value_item in value:
-        if not (type(value_item) == type(of_type)):
-            return False
-
 
 validation_messages = {
-    is_str: 'Field "{}" must be type of string',
-    is_int: 'Field "{}" must be type of integer',
-    is_float: 'Field "{}" must be type of float',
-    required: 'Field "{}" is required',
-    is_date: 'Field "{}" must be a valid date in format Y-m-d',
-    is_list_of: 'Field "{}" must a list'
+    is_str: 'Field "{}" must be type of string in object {}',
+    is_int: 'Field "{}" must be type of integer in object {}',
+    is_float: 'Field "{}" must be type of float in object {}',
+    is_bool: 'Field "{}" must be type of boolean in object {}',
+    required: 'Field "{}" is required in object {}',
+    is_date: 'Field "{}" must be a valid date in format Y-m-d in object {}',
 }
 
 
@@ -91,9 +86,9 @@ def validate_object(obj):
             continue
 
         value = cls_attr[len(cls_attr) - 1]
-        if isinstance(value, BaseType):
+        if isinstance(value, RequestType):
             pass
-        g
+
         checks = check_validation_function(attr, value, cls_attr)
         if len(checks) > 0:
             errors += checks
