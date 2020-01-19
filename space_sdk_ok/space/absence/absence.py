@@ -13,3 +13,4 @@ class Absence(Space):
 
         self.urn += urn
 
+g
