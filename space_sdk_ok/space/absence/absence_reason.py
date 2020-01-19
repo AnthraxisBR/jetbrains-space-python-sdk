@@ -27,7 +27,7 @@ def create_absences_reason_in_absence_reason(absence: Absence, absence_reason_id
     :return:
     """
     base_path: str = absence.mount_base_path('/absence-reasons/{}')
-    urn = base_path.format(absence.absence, absence_reason_id)
+    urn = base_path.format(absence_reason_id)
 
     absence_reason.validate_object(absence_reason.kwargs)
 
@@ -53,7 +53,7 @@ def get_absences_reason(absence: Absence, absence_reason: str):
     :return:
     """
     base_path: str = absence.mount_base_path('/absence-reasons/{}')
-    urn = base_path.format(absence.absence, absence_reason)
+    urn = base_path.format(absence_reason)
 
     return absence.get(urn=urn)
 
@@ -71,7 +71,7 @@ def delete_absences_reason(absence: Absence, absence_reason: str, params=None):
         params = {}
 
     base_path: str = absence.mount_base_path('/absence-reasons/{}')
-    urn = base_path.format(absence.absence, absence_reason)
+    urn = base_path.format(absence_reason)
 
     available_args: dict = {
         'delete': str
