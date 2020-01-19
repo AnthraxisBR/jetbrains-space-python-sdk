@@ -10,7 +10,7 @@ from ...typing.check_types import (
     is_str,
     is_bool,
     is_date
-)g
+)
 
 
 class Absence(RequestType):
