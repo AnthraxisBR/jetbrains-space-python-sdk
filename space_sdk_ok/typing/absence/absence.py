@@ -13,7 +13,7 @@ from ...typing.check_types import (
 )
 
 
-class Absence(RequestType):
+class AbsenceRequest(RequestType):
     member = [required, is_str]
 
     reason = [required, is_str]
@@ -31,6 +31,11 @@ class Absence(RequestType):
     icon = [required, is_str]
 
     # TODO: Custom Field Value
+
+
+class ApproveAbsenceRequest(RequestType):
+
+    approve: [required, is_bool]
 
 
 class AbsenceApprovalRecord(RecordType):

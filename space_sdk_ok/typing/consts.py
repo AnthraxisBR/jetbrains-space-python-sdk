@@ -1,6 +1,9 @@
 
 
 null: str = 'null'
+All: str = 'All'
+WithAccessibleReasonUnapproved: str = 'WithAccessibleReasonUnapproved'
+WithAccessibleReasonAll: str = 'WithAccessibleReasonAll'
 Opened: str = 'Opened'
 Closed: str = 'Closed'
 Deleted: str = 'Deleted'
@@ -47,4 +50,10 @@ CF_values: list = [
     StringCFValue,
     StringListCFValue,
     UrlCFValue
+]
+
+viewMode: list = [
+    All,
+    WithAccessibleReasonAll,
+    WithAccessibleReasonUnapproved
 ]
