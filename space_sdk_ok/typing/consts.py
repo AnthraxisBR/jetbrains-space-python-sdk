@@ -18,6 +18,33 @@ DIR: str = 'DIR'
 GIT_LINK: str = 'GIT_LINK'
 SYM_LINK: str = 'SYM_LINK'
 
+BooleanCFValue: str = 'BooleanCFValue'
+DateCFValue: str = 'DateCFValue'
+EnumCFValue: str = 'EnumCFValue'
+EnumListCFValue: str = 'EnumListCFValue'
+IntCFValue: str = 'IntCFValue'
+IntListCFValue: str = 'IntListCFValue'
+ProfileCFValue: str = 'ProfileCFValue'
+ProfileListCFValue: str = 'ProfileListCFValue'
+StringCFValue: str = 'StringCFValue'
+StringListCFValue: str = 'StringListCFValue'
+UrlCFValue: str = 'UrlCFValue'
+
+
 changeTypes: list = [
     ADDED, DELETED, MODIFIED
+]
+
+CF_values: list = [
+    BooleanCFValue,
+    DateCFValue,
+    EnumCFValue,
+    EnumListCFValue,
+    IntCFValue,
+    IntListCFValue,
+    ProfileCFValue,
+    ProfileListCFValue,
+    StringCFValue,
+    StringListCFValue,
+    UrlCFValue
 ]
