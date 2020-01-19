@@ -1,16 +1,11 @@
 import inspect
-from ..space_types.custom_types import Empty
-
-from ..space_types.check_types import (
-    is_nullable,
-    validation_messages,
-    required
+from .check_types import (
+    required, is_nullable, validation_messages,
 )
 
-from ..exceptions.TypeException import (
-    InvalidObjectException
-)
+from ..exceptions.TypeException import InvalidObjectException
 
+from .custom_types import Empty
 
 class BaseType(object):
     annotations: list
@@ -29,7 +24,7 @@ class BaseType(object):
             if arg in self.annotations:
                 print(self.annotations[arg])
 
-    def __dict__(self):
+    def __dict__(self) -> dict:
         dict_response: dict = {}
         for attr in self.validated_attrs:
             if issubclass(type(self.validated_attrs[attr]), RequestType):
@@ -47,6 +42,7 @@ class RequestType(BaseType):
     def __init__(self, **kwargs):
         self.validated_dict = None
         self.attributes: dict = self.__class__.__dict__
+        self.kwargs = kwargs
         self.validate_object(kwargs)
 
     def validate_object(self, kwargs):
@@ -70,9 +66,8 @@ class RequestType(BaseType):
 
                 if required not in cls_attrs and attr not in kwargs:
                     continue
-
+                #
                 # if issubclass(type(self), RequestType):
-                #     print(attr)
                 #     validated_attrs[attr] = kwargs[attr]
                 #     continue
 
@@ -88,9 +83,6 @@ class RequestType(BaseType):
             raise InvalidObjectException(errors=errors)
 
         self.validated_attrs = validated_attrs
-
-    def get_validated_attrs(self):
-        return self.validated_attrs
 
     def only_available_attrs(self, attrs: list):
         if any(item in self.validated_dict for item in attrs):

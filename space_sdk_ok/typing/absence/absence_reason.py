@@ -1,11 +1,9 @@
-from ..rule import Rule
-
 from ..base_type import (
     RequestType,
     RecordType
 )
 
-from ...space_types.check_types import (
+from ...typing.check_types import (
     required,
     is_str,
     is_bool

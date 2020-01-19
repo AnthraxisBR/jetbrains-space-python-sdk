@@ -1,10 +1,7 @@
 import inspect
 import pendulum
+from ..exceptions.TypeException import InvalidParameterTypeException
 from .custom_types import Empty
-from ..exceptions.TypeException import (
-    InvalidParameterTypeException,
-    InvalidObjectException
-)
 
 
 def validate(params: dict, comparable: dict):
@@ -63,42 +60,3 @@ validation_messages = {
     is_date: 'Field "{}" must be a valid date in format Y-m-d in object {}',
 }
 
-
-def check_validation_function(attr, value, func_list) -> list:
-    checks: list = []
-    for func in func_list:
-        if not callable(func) or func == Empty:
-            continue
-
-        if not func(value) and is_nullable not in func_list:
-            if func in validation_messages:
-                checks.append(validation_messages[func].format(attr))
-    return checks
-
-
-def validate_object(obj):
-    attrs: list = [a for a in dir(obj) if not a.startswith('__')]
-
-    errors: list = []
-    new_dict: dict = {}
-    for attr in attrs:
-
-        cls_attr = getattr(obj, attr)
-        if inspect.ismethod(cls_attr):
-            continue
-
-        value = cls_attr[len(cls_attr) - 1]
-        if isinstance(value, RequestType):
-            pass
-
-        checks = check_validation_function(attr, value, cls_attr)
-        if len(checks) > 0:
-            errors += checks
-        else:
-            if value is not Empty:
-                new_dict[attr] = value
-
-    if len(errors) > 0:
-        print(errors)
-        raise InvalidObjectException(errors=errors)
-    return new_dict

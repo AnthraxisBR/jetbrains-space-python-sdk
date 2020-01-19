@@ -1,6 +1,6 @@
-from space_sdk.space_types import Empty
-from space_sdk.object_types.base_type import RequestType
-from space_sdk.space_types.check_types import (
+from ..space_types.custom_types import Empty
+from ..object_types.base_type import RequestType
+from ..space_types.check_types import (
     is_nullable, required, is_str, is_list
 )
 
