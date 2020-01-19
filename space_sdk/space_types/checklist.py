@@ -1,12 +1,15 @@
-from space_sdk.space_types import *
-from space_sdk.space_types import Empty
-from space_sdk.space_types.base_type import BaseType
-from space_sdk.space_types.check_types import (
-    is_nullable, required, is_str
+from ..object_types.base_type import (
+    RequestType
 )
 
+from ..space_types.check_types import (
+    is_str, is_nullable, required
+)
 
-class Checklist(BaseType):
+from ..space_types.custom_types import Empty
+
+
+class Checklist(RequestType):
     projectId: list = [is_nullable]
 
     name: list = [required, is_str]
@@ -17,7 +20,8 @@ class Checklist(BaseType):
 
     tag: list = [is_nullable, is_str]
 
-    def __init__(self, name: str = Empty, projectId=Empty, owner: str = Empty, tag: str = Empty, description: str = Empty):
+    def __init__(self, name: str = Empty, projectId=Empty, owner: str = Empty, tag: str = Empty,
+                 description: str = Empty):
         """
 
         :param name:
@@ -50,7 +54,7 @@ class Checklist(BaseType):
             return self.validated_dict
 
 
-class ChecklistImport(BaseType):
+class ChecklistImport(RequestType):
     """
 
     """
@@ -82,7 +86,7 @@ class ChecklistImport(BaseType):
         return self.validated_dict
 
 
-class ChecklistImportLines(BaseType):
+class ChecklistImportLines(RequestType):
     """
 
     """

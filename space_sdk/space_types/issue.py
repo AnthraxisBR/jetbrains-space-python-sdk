@@ -1,12 +1,11 @@
-from space_sdk.space_types import *
 from space_sdk.space_types import Empty
-from space_sdk.space_types.base_type import BaseType
+from space_sdk.object_types.base_type import RequestType
 from space_sdk.space_types.check_types import (
     is_nullable, required, is_str, is_date, is_list, is_bool
 )
 
 
-class Issue(BaseType):
+class Issue(RequestType):
     title: list = [required, is_str]
 
     description: list = [is_nullable, is_str]
@@ -54,7 +53,7 @@ class Issue(BaseType):
             return self.validated_dict
 
 
-class IssueResolved(BaseType):
+class IssueResolved(RequestType):
     resolved: list = [required, is_bool]
 
     def __init__(self, resolved: bool = Empty):
