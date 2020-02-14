@@ -19,7 +19,7 @@ class CustomFieldValue(RequestType):
 
 class CustomFieldValues(RequestType):
     customFieldValues: [CustomFieldValue]
-g
+
 
 class CustomColumnValuesWithSchemaData(RecordType):
     pass

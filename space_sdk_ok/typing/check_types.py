@@ -50,6 +50,9 @@ def is_date(value):
         return False
     return True
 
+def is_instance_of(instance, value):
+    return isinstance(instance, value)
+
 
 validation_messages = {
     is_str: 'Field "{}" must be type of string in object {}',
